@@ -1,21 +1,21 @@
 {
   "development": {
     "username": "admin",
-    "password": "1111",
+    "password": "dk2db!",
     "database": "hwagaemarket",
     "host": "54.180.155.106",
     "dialect": "mysql"
   },
   "test": {
     "username": "admin",
-    "password": "1111",
+    "password": "dk2db!",
     "database": "hwagaemarket",
     "host": "54.180.155.106",
     "dialect": "mysql"
   },
   "production": {
     "username": "admin",
-    "password": "1111",
+    "password": "dk2db!",
     "database": "hwagaemarket",
     "host": "54.180.155.106",
     "dialect": "mysql"
