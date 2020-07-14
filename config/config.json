@@ -3,7 +3,7 @@
     "username": "admin",
     "password": "1111",
     "database": "hwagaemarket",
-    "host": "127.0.0.1",
+    "host": "54.180.155.106",
     "dialect": "mysql"
   },
   "test": {
