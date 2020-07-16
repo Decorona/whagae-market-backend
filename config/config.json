@@ -17,7 +17,7 @@
     "username": "admin",
     "password": "dk2db!",
     "database": "hwagaemarket",
-    "host": "54.180.155.106",
+    "host": "localhost",
     "dialect": "mysql"
   }
 }
