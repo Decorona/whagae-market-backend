@@ -1,42 +1,56 @@
 module.exports = function (sequelize, DataTypes) {
-  const User = sequelize.define("User", {
-    loginId: {
-      field: "login_id",
-      type: DataTypes.STRING(30),
-      unique: true,
-      allowNull: false,
+  const User = sequelize.define(
+    "User",
+    {
+      loginId: {
+        field: "login_id",
+        type: DataTypes.STRING(30),
+        unique: true,
+        allowNull: false,
+      },
+      password: {
+        field: "password",
+        type: DataTypes.STRING(50),
+        allowNull: false,
+      },
+      name: {
+        field: "name",
+        type: DataTypes.STRING(30),
+        allowNull: false,
+      },
+      phone: {
+        field: "phone",
+        type: DataTypes.STRING(30),
+        allowNull: false,
+      },
+      isSeller: {
+        field: "is_seller",
+        type: DataTypes.BOOLEAN,
+        defaultValue: 0,
+      },
+      coin: {
+        filed: "coin",
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
+      address: {
+        filed: "address",
+        type: DataTypes.STRING(150),
+        allowNull: true,
+      },
+      createdAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("NOW()"),
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("NOW()"),
+      },
     },
-    password: {
-      field: "password",
-      type: DataTypes.STRING(50),
-      allowNull: false,
-    },
-    name: {
-      field: "name",
-      type: DataTypes.STRING(30),
-      allowNull: false,
-    },
-    phone: {
-      field: "phone",
-      type: DataTypes.STRING(30),
-      allowNull: false,
-    },
-    isSeller: {
-      field: "is_seller",
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
-    coin: {
-      filed: "coin",
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-    address: {
-      filed: "address",
-      type: DataTypes.STRING(150),
-      allowNull: true,
-    },
-  });
+    {
+      timestamps: true,
+    }
+  );
   User.associate = (db) => {
     // 유저는 여러개의 사업자(매장)를 가질 수 있다.
     db.User.hasMany(db.Market);

@@ -1,44 +1,58 @@
 module.exports = function (sequelize, DataTypes) {
-  const Market = sequelize.define("Market", {
-    marketName: {
-      field: "market_name",
-      type: DataTypes.STRING(30),
-      allowNull: false,
+  const Market = sequelize.define(
+    "Market",
+    {
+      marketName: {
+        field: "market_name",
+        type: DataTypes.STRING(30),
+        allowNull: false,
+      },
+      marketPhoto: {
+        field: "market_photo",
+        type: DataTypes.STRING(30),
+        allowNull: true,
+      },
+      marketPhone: {
+        field: "market_phone",
+        type: DataTypes.STRING(30),
+        allowNull: false,
+      },
+      marketCategory: {
+        field: "market_category",
+        type: DataTypes.STRING(30),
+        allowNull: false,
+      },
+      // 사업자 소재지
+      marketBusinessLocation: {
+        field: "market_business_location",
+        type: DataTypes.STRING(100),
+        allowNull: false,
+      },
+      // 발급된 지역 코드
+      marketRegionCode: {
+        field: "market_region_code",
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      marketStarPoint: {
+        field: "market_star_point",
+        type: DataTypes.FLOAT,
+        allowNull: false,
+        defaultValue: 0,
+      },
+      createdAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("NOW()"),
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        defaultValue: sequelize.literal("NOW()"),
+      },
     },
-    marketPhoto: {
-      field: "market_photo",
-      type: DataTypes.STRING(30),
-      allowNull: true,
-    },
-    marketPhone: {
-      field: "market_phone",
-      type: DataTypes.STRING(30),
-      allowNull: false,
-    },
-    marketCategory: {
-      field: "market_category",
-      type: DataTypes.STRING(30),
-      allowNull: false,
-    },
-    // 사업자 소재지
-    marketBusinessLocation: {
-      field: "market_business_location",
-      type: DataTypes.STRING(100),
-      allowNull: false,
-    },
-    // 발급된 지역 코드
-    marketRegionCode: {
-      field: "market_region_code",
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    marketStarPoint: {
-      field: "market_star_point",
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 0,
-    },
-  });
+    {
+      timestamps: true,
+    }
+  );
   Market.associate = (db) => {
     db.Market.hasMany(db.Goods);
 
