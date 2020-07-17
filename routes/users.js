@@ -44,6 +44,8 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/login", async (req, res, next) => {
   try {
+    if (!req.body.loginId || !req.body.password) throw new Error("loginId or password is invalid value");
+
     const user = await models.User.findOne({
       where: { loginId: req.body.loginId, password: req.body.password },
     });
