@@ -44,6 +44,9 @@ module.exports = function (sequelize, DataTypes) {
 
     // 마켓은 여러개의 주문서를 가질 수 있다.
     db.Market.hasMany(db.PurchaseOrder);
+
+    // 마켓은 여러개의 리뷰를 가질 수 있다.
+    db.Market.hasMany(db.MarketReviews);
   };
   return Market;
 };
