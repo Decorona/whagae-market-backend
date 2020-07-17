@@ -17,7 +17,7 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
   Goods.associate = (db) => {
-    db.Goods.belongsTo(db.Market);
+    db.Goods.hasMany(db.GoodsOptions)
   };
   return Goods;
 };

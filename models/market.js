@@ -15,10 +15,35 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING(30),
       allowNull: false,
     },
+    marketCategory: {
+      field: "market_category",
+      type: DataTypes.STRING(30),
+      allowNull: false,
+    },
+    // 사업자 소재지
+    marketBusinessLocation: {
+      field: "market_business_location",
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
+    // 발급된 지역 코드
+    marketRegionCode: {
+      field: "market_region_code",
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    marketStarPoint: {
+      field: "market_star_point",
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+    },
   });
   Market.associate = (db) => {
     db.Market.hasMany(db.Goods);
-    db.Market.belongsTo(db.User);
+
+    // 마켓은 여러개의 주문서를 가질 수 있다.
+    db.Market.hasMany(db.PurchaseOrder);
   };
   return Market;
 };
