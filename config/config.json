@@ -1,23 +1,23 @@
 {
   "development": {
     "username": "admin",
-    "password": "dk2db!",
+    "password": "dkdldbdlssk!!@",
     "database": "hwagaemarket",
-    "host": "54.180.155.106",
+    "host": "3.34.190.9",
     "dialect": "mysql"
   },
   "test": {
     "username": "admin",
-    "password": "dk2db!",
+    "password": "dkdldbdlssk!!@",
     "database": "hwagaemarket",
-    "host": "54.180.155.106",
+    "host": "3.34.190.9",
     "dialect": "mysql"
   },
   "production": {
     "username": "admin",
-    "password": "dk2db!",
+    "password": "dkdldbdlssk!!@",
     "database": "hwagaemarket",
-    "host": "127.0.0.1",
+    "host": "3.34.190.9",
     "dialect": "mysql"
   }
 }

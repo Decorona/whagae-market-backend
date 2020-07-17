@@ -4,13 +4,24 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+// Swagger JS Docs
+const swaggerJSDoc = require("swagger-jsdoc");
+
+// Router
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+
 const db = require("./models");
 db.sequelize.sync({
   force: false,
 });
 var app = express();
+
+// Swagger With Express
+const options = require("./swagger-jsdoc-options");
+
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = swaggerJSDoc(options);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -21,6 +32,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+// Swagger UI Mount
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
