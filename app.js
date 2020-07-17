@@ -11,6 +11,7 @@ const swaggerJSDoc = require('swagger-jsdoc');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var marketsRouter = require('./routes/markets');
+var goodsRouter = require('./routes/goods');
 
 const db = require('./models');
 db.sequelize.sync({
@@ -40,6 +41,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/markets', marketsRouter);
+app.use('/goods', goodsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
