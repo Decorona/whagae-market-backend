@@ -10,7 +10,7 @@ const swaggerJSDoc = require("swagger-jsdoc");
 // Router
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-var marketsRouter = require("./routes/markets");
+var marketsRouter = require("./routes/market");
 var goodsRouter = require("./routes/goods");
 
 const db = require("./models");
@@ -40,7 +40,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/markets", marketsRouter);
+app.use("/market", marketsRouter);
 app.use("/goods", goodsRouter);
 
 // catch 404 and forward to error handler
