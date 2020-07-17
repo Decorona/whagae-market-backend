@@ -1,6 +1,6 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-const models = require('../models');
+const models = require("../models");
 
 /* GET users listing. */
 /**
@@ -19,7 +19,7 @@ const models = require('../models');
  *       200:
  *         description: Receive back GoodsModel
  */
-router.get('/', function (req, res, next) {
+router.get("/", function (req, res, next) {
   models.Goods.findAll({
     include: [
       {
@@ -35,10 +35,10 @@ router.get('/', function (req, res, next) {
     });
 });
 
-router.get('/:id', async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const Goods = await models.Goods.findOne({
-      where: {id: req.params.id},
+      where: { id: req.params.id },
     });
 
     res.json(Goods);

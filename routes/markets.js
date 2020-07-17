@@ -1,6 +1,6 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
-const models = require('../models');
+const models = require("../models");
 
 /* GET users listing. */
 /**
@@ -19,8 +19,15 @@ const models = require('../models');
  *       200:
  *         description: Receive back MarketModel
  */
-router.get('/', function (req, res, next) {
-  models.Market.findAll()
+router.get("/", function (req, res, next) {
+  models.Market.findAll({
+    include: [
+      {
+        model: models.MarketReviews,
+        where: { PurchaseOrderId: Market.id },
+      },
+    ],
+  })
     .then((result) => {
       res.json(result);
     })
@@ -29,10 +36,10 @@ router.get('/', function (req, res, next) {
     });
 });
 
-router.get('/:id', async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const user = await models.Market.findOne({
-      where: {id: req.params.id},
+      where: { id: req.params.id },
     });
 
     res.json(user);
