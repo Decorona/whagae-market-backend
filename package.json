@@ -17,6 +17,7 @@
     "sequelize": "6.3.3"
   },
   "devDependencies": {
+    "prettier": "^2.0.5",
     "nodemon": "2.0.4",
     "swagger-jsdoc": "^4.0.0",
     "swagger-ui-express": "^4.1.4"
