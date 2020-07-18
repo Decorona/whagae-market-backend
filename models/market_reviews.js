@@ -40,7 +40,7 @@ module.exports = function (sequelize, DataTypes) {
     db.MarketReviews.belongsTo(db.PurchaseOrder);
 
     // 리뷰는 사장님 리뷰와 고객 리뷰가 나눠짐
-    db.MarketReviews.hasOne(db.MarketReviews, { as: "marketOwnerReview" });
+    db.MarketReviews.hasOne(db.MarketReviews, { as: "MarketOwnerReview" });
   };
   return MarketReviews;
 };
