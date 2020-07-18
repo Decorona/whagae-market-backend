@@ -31,6 +31,11 @@ router.get("/region", function (req, res, next) {
           [Op.like]: "%" + location + "%",
         },
       },
+      include: [
+        {
+          model: models.MarketReviews,
+        },
+      ],
     })
       .then((result) => {
         res.json(result);
