@@ -7,7 +7,9 @@ const Op = Sequelize.Op;
 
 /* GET Market listing. */
 router.get("/", function (req, res, next) {
-  models.Market.findAll()
+  models.Market.findAll({
+    where: req.query.category ? { marketCategory: req.query.category } : {},
+  })
     .then((result) => {
       res.json(result);
     })
