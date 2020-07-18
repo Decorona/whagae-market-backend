@@ -29,6 +29,9 @@ module.exports = function (sequelize, DataTypes) {
 
     // 2. 하나의 장바구니는 여러개의 상품 번들을 가지고 있다.
     db.ShoppingCart.hasMany(db.ShoppingGoodsBundle);
+
+    // 3. 하나의 장바구니는 마켓에 속한다
+    db.ShoppingCart.belongsTo(db.Market);
   };
   return ShoppingCart;
 };

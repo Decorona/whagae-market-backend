@@ -46,11 +46,30 @@ router.get("/region", function (req, res, next) {
 
 router.get("/:id", async (req, res, next) => {
   try {
-    const user = await models.Market.findOne({
+    const market = await models.Market.findOne({
       where: { id: req.params.id },
     });
 
-    res.json(user);
+    res.json(market);
+  } catch (e) {
+    console.error(e);
+    next(e);
+  }
+});
+
+// Market이 가지고 있는 Goods List
+router.get("/:id/goods-list", async (req, res, next) => {
+  try {
+    const market = await models.Market.findOne({
+      where: { id: req.params.id },
+      include: [
+        {
+          model: models.Goods,
+        },
+      ],
+    });
+
+    res.json(market);
   } catch (e) {
     console.error(e);
     next(e);

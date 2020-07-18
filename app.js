@@ -12,6 +12,8 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var marketsRouter = require("./routes/market");
 var goodsRouter = require("./routes/goods");
+var goodsBundleRouter = require("./routes/goods-bundle");
+var cartRouter = require("./routes/cart");
 
 const db = require("./models");
 db.sequelize.sync({
@@ -42,6 +44,8 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/market", marketsRouter);
 app.use("/goods", goodsRouter);
+app.use("/goods-bundle", goodsBundleRouter);
+app.use("/cart", cartRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
