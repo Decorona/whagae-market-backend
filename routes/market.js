@@ -65,6 +65,11 @@ router.get("/:id/goods-list", async (req, res, next) => {
       include: [
         {
           model: models.Goods,
+          include: [
+            {
+              model: models.GoodsOptions,
+            },
+          ],
         },
       ],
     });

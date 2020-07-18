@@ -42,6 +42,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+// 로그인 API
 router.post("/login", async (req, res, next) => {
   try {
     if (!req.body.loginId || !req.body.password)
