@@ -38,6 +38,11 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING(150),
         allowNull: true,
       },
+      profileImg: {
+        filed: "profile_img",
+        type: DataTypes.TEXT,
+        allowNull: true,
+      },
       createdAt: {
         type: DataTypes.DATE,
         defaultValue: sequelize.literal("NOW()"),
