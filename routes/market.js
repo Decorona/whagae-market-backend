@@ -9,6 +9,7 @@ const Op = Sequelize.Op;
 router.get("/", function (req, res, next) {
   const location = req.query.location;
   const category = req.query.category;
+  const isEvent = req.query.isEvent;
 
   let whereClause = {};
 
@@ -19,6 +20,12 @@ router.get("/", function (req, res, next) {
   if (category) {
     whereClause.marketCategory = category;
   }
+
+  if (isEvent) {
+    whereClause.isEvent = isEvent === "true" ? 1 : 0;
+  }
+
+  console.log(whereClause);
 
   models.Market.findAll({
     where: whereClause,

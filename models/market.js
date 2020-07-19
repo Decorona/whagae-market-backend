@@ -40,6 +40,11 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false,
         defaultValue: 0,
       },
+      isEvent: {
+        field: "is_event",
+        type: DataTypes.BOOLEAN,
+        defaultValue: 0,
+      },
       createdAt: {
         type: DataTypes.DATE,
         defaultValue: sequelize.literal("NOW()"),
