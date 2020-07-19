@@ -42,8 +42,16 @@ router.get("/by-market/:id", function (req, res, next) {
     where: { marketOwnerReviewId: { [Op.eq]: null }, MarketId: req.params.id },
     include: [
       {
+        model: models.User,
+      },
+      {
         model: models.MarketReviews,
         as: "MarketOwnerReview",
+        include: [
+          {
+            model: models.User,
+          },
+        ],
       },
       {
         model: models.PurchaseOrder,

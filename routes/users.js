@@ -62,7 +62,7 @@ router.post("/login", async (req, res, next) => {
 // 유저가 가지고 있는 카트를 전부 가지고 옴.
 router.get("/:id/cart-list", async (req, res, next) => {
   try {
-    const selCartListByUser = await models.User.findAll({
+    const selCartListByUser = await models.User.findOne({
       where: { id: req.params.id },
       include: [
         {

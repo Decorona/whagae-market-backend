@@ -41,6 +41,9 @@ module.exports = function (sequelize, DataTypes) {
 
     // 리뷰는 사장님 리뷰와 고객 리뷰가 나눠짐
     db.MarketReviews.hasOne(db.MarketReviews, { as: "MarketOwnerReview" });
+
+    // 리뷰는 유저에 속함
+    db.MarketReviews.belongsTo(db.User);
   };
   return MarketReviews;
 };
