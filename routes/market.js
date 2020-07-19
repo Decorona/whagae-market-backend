@@ -36,6 +36,34 @@ router.get("/", function (req, res, next) {
     });
 });
 
+// Market Goods List Search
+router.get("/search", async (req, res, next) => {
+  let whereClause = {};
+
+  if (req.query.goodsName) {
+    whereClause.goodsName = {
+      [Op.like]: "%" + req.query.goodsName + "%",
+    };
+  }
+
+  // console.log(whereClause);
+  try {
+    const goodsList = await models.Goods.findAll({
+      where: whereClause,
+      include: [
+        {
+          model: models.Market,
+        },
+      ],
+    });
+
+    res.json(goodsList);
+  } catch (e) {
+    console.error(e);
+    next(e);
+  }
+});
+
 // 지역검색
 router.get("/region", function (req, res, next) {
   try {

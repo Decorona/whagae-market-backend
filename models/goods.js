@@ -37,6 +37,9 @@ module.exports = function (sequelize, DataTypes) {
   );
   Goods.associate = (db) => {
     db.Goods.hasMany(db.GoodsOptions);
+
+    // 굿즈는 마켓에 속한다.
+    db.Goods.belongsTo(db.Market);
   };
   return Goods;
 };
