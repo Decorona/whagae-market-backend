@@ -9,7 +9,7 @@ module.exports = function (sequelize, DataTypes) {
       },
       marketPhoto: {
         field: "market_photo",
-        type: DataTypes.STRING(30),
+        type: DataTypes.TEXT,
         allowNull: true,
       },
       marketPhone: {

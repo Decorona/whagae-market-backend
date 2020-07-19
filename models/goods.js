@@ -9,7 +9,7 @@ module.exports = function (sequelize, DataTypes) {
       },
       goodsPhoto: {
         field: "goods_photo",
-        type: DataTypes.STRING(30),
+        type: DataTypes.TEXT,
         allowNull: true,
       },
       price: {
