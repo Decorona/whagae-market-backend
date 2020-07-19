@@ -11,6 +11,10 @@ database는 mariadb를 사용하였으며
 
 db orm은 sequelize를 사용하였습니다
 
+개발단계에서 pm2와 ainize를 이용하여 배포하였으나
+
+최종적으로 docker를 이용해 배포하고 있습니다
+
 백엔드 서버를 기동하기 위한 명령어는 아래와 같습니다
 
 git clone
