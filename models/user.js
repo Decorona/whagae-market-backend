@@ -29,17 +29,17 @@ module.exports = function (sequelize, DataTypes) {
         defaultValue: 0,
       },
       coin: {
-        filed: "coin",
+        field: "coin",
         type: DataTypes.INTEGER,
         allowNull: true,
       },
       address: {
-        filed: "address",
+        field: "address",
         type: DataTypes.STRING(150),
         allowNull: true,
       },
       profileImg: {
-        filed: "profile_img",
+        field: "profile_img",
         type: DataTypes.TEXT,
         allowNull: true,
       },
