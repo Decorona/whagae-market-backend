@@ -10,7 +10,7 @@ npm start
 
 ( docker option )
 
-docker built -t snpo/hwagae .
+docker build -t snpo/hwagae .
 
 docker push snpo/hwagae
 
