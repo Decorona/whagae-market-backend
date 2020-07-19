@@ -107,8 +107,7 @@ router.post("/add-to-cart", async function (req, res, next) {
       !marketId ||
       !goodsBundlePaymentTotal ||
       !budleQuantity ||
-      !goodsId ||
-      !goodsOptionId
+      !goodsId
     ) {
       throw new Error("파라미터 값은 모두 필수입니다.");
     }
@@ -143,7 +142,6 @@ router.post("/add-to-cart", async function (req, res, next) {
       goodsBundleQuantity: budleQuantity,
       // Foreign Key
       GoodId: goodsId,
-      GoodsOptionId: goodsOptionId,
       ShoppingCartId: cart.id,
     });
 
