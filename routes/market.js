@@ -7,8 +7,26 @@ const Op = Sequelize.Op;
 
 /* GET Market listing. */
 router.get("/", function (req, res, next) {
+  const location = req.query.location;
+  const category = req.query.category;
+
+  let whereClause = {};
+
+  if (location) {
+    whereClause.marketBusinessLocation = { [Op.like]: "%" + location + "%" };
+  }
+
+  if (category) {
+    whereClause.marketCategory = category;
+  }
+
   models.Market.findAll({
-    where: req.query.category ? { marketCategory: req.query.category } : {},
+    where: whereClause,
+    include: [
+      {
+        model: models.MarketReviews,
+      },
+    ],
   })
     .then((result) => {
       res.json(result);
