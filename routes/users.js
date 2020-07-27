@@ -42,6 +42,35 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+router.put("/:id", async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    const { userName, phone, address, profileImg, isSeller } = req.body;
+
+    if (!userId) {
+      throw new Error("'userId' is Required");
+    }
+
+    let updateQuery = {};
+    if (userName) updateQuery.name = userName;
+    if (phone) updateQuery.phone = phone;
+    if (address) updateQuery.address = address;
+    if (profileImg) updateQuery.profileImg = profileImg;
+
+    if (isSeller === true) updateQuery.isSeller = 1;
+    else updateQuery.isSeller = 0;
+
+    const user = await models.User.update(updateQuery, {
+      where: { id: userId },
+    });
+
+    res.json({ statusCode: 200, changedTo: updateQuery });
+  } catch (e) {
+    console.error(e);
+    next(e);
+  }
+});
+
 // 로그인 API
 router.post("/login", async (req, res, next) => {
   try {
@@ -99,7 +128,7 @@ router.post("/add-to-cart", async function (req, res, next) {
   const goodsBundlePaymentTotal = req.body.totalPayment; // 해당 번들의 토탈 가격을 받는다.
   const budleQuantity = req.body.budleQuantity;
   const goodsId = req.body.goodsId;
-  const goodsOptionId = req.body.goodsOptionId;
+  // const goodsOptionId = req.body.goodsOptionId;
 
   try {
     if (
