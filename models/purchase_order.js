@@ -43,6 +43,12 @@ module.exports = function (sequelize, DataTypes) {
         ),
         allowNull: false,
       },
+      // 배송 타입
+      deliveryType: {
+        field: "delivery_type",
+        type: DataTypes.ENUM("deliver", "visit"),
+        allowNull: false,
+      },
       createdAt: {
         type: DataTypes.DATE,
         defaultValue: sequelize.literal("NOW()"),

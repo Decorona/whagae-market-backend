@@ -45,7 +45,14 @@ router.get("/:id", async (req, res, next) => {
 router.put("/:id", async (req, res, next) => {
   try {
     const userId = req.params.id;
-    const { userName, phone, address, profileImg, isSeller } = req.body;
+    const {
+      userName,
+      phone,
+      address,
+      profileImg,
+      isSeller,
+      isMember,
+    } = req.body;
 
     if (!userId) {
       throw new Error("'userId' is Required");
@@ -59,6 +66,9 @@ router.put("/:id", async (req, res, next) => {
 
     if (isSeller === true) updateQuery.isSeller = 1;
     else updateQuery.isSeller = 0;
+
+    if (isMember === true) updateQuery.isMember = 1;
+    else updateQuery.isMember = 0;
 
     const user = await models.User.update(updateQuery, {
       where: { id: userId },

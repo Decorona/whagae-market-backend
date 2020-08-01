@@ -43,6 +43,11 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.TEXT,
         allowNull: true,
       },
+      isMember: {
+        field: "is_member",
+        type: DataTypes.BOOLEAN,
+        defaultValue: 0,
+      },
       createdAt: {
         type: DataTypes.DATE,
         defaultValue: sequelize.literal("NOW()"),

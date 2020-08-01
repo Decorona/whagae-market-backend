@@ -45,6 +45,11 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.BOOLEAN,
         defaultValue: 0,
       },
+      deliveryFee: {
+        field: "delivery_fee",
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
       createdAt: {
         type: DataTypes.DATE,
         defaultValue: sequelize.literal("NOW()"),

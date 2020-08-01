@@ -9,6 +9,12 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      // 해당 장바구니의 결제 완료 여부
+      paid: {
+        field: "paid",
+        type: DataTypes.BOOLEAN,
+        defaultValue: 0,
+      },
       createdAt: {
         type: DataTypes.DATE,
         defaultValue: sequelize.literal("NOW()"),

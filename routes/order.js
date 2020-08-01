@@ -9,6 +9,7 @@ router.post("/", async function (req, res, next) {
     deliveryMemo: req.body.deliveryMemo,
     receiverPhone: req.body.receiverPhone,
     paymentMethodType: req.body.paymentMethodType,
+    deliveryType: req.body.deliveryType,
     MarketId: req.body.marketId,
     ShoppingCartId: req.body.shoppingCartId,
     UserId: req.body.userId,
@@ -50,7 +51,12 @@ router.post("/", async function (req, res, next) {
 
       // 최종 결제 주문서 발행
       models.PurchaseOrder.create(values)
-        .then((result) => {
+        .then(async (result) => {
+          // 주문서 발행이 완료되었으면, 결제된 장바구니를 업데이트 해 준다.
+          await shopping_cart.update({
+            paid: true,
+          });
+
           result.dataValues.remainderCoin = user.coin;
           res.json(result);
         })
