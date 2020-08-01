@@ -63,6 +63,9 @@ module.exports = function (sequelize, DataTypes) {
     }
   );
 
-  PurchaseOrder.associate = (db) => {};
+  PurchaseOrder.associate = (db) => {
+    // 1. 하나의 주문은 하나의 장바구니에 속한다. (1:1)
+    db.PurchaseOrder.belongsTo(db.ShoppingCart);
+  };
   return PurchaseOrder;
 };

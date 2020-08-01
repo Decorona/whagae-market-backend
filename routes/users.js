@@ -237,6 +237,19 @@ router.get("/:id/orders", function (req, res, next) {
 
   models.PurchaseOrder.findAll({
     where: selQuery,
+    include: [
+      {
+        model: models.ShoppingCart,
+        include: [
+          {
+            model: models.ShoppingGoodsBundle,
+          },
+          {
+            model: models.Market,
+          },
+        ],
+      },
+    ],
   })
     .then((result) => {
       res.json(result);
