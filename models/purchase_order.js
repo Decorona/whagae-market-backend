@@ -42,6 +42,7 @@ module.exports = function (sequelize, DataTypes) {
           "Direct_CreditCard"
         ),
         allowNull: false,
+        defaultValue: "CreditCard",
       },
       // 배송 타입
       deliveryType: {
@@ -66,6 +67,9 @@ module.exports = function (sequelize, DataTypes) {
   PurchaseOrder.associate = (db) => {
     // 1. 하나의 주문은 하나의 장바구니에 속한다. (1:1)
     db.PurchaseOrder.belongsTo(db.ShoppingCart);
+
+    // 2. 하나의 주문은 여러개의 리뷰를 가질 수 있다. (최대 2개 - 가게 사장님, 구매자)
+    db.PurchaseOrder.hasMany(db.MarketReviews);
   };
   return PurchaseOrder;
 };

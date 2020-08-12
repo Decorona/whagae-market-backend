@@ -249,6 +249,7 @@ router.get("/:id/orders", function (req, res, next) {
           },
         ],
       },
+      { model: models.MarketReviews },
     ],
   })
     .then((result) => {

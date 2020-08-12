@@ -50,6 +50,11 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.INTEGER,
         defaultValue: 0,
       },
+      deliveryTime: {
+        field: "delivery_time",
+        type: DataTypes.STRING(30),
+        defaultValue: "30~50분",
+      },
       createdAt: {
         type: DataTypes.DATE,
         defaultValue: sequelize.literal("NOW()"),

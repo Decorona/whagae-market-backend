@@ -26,7 +26,7 @@ router.post("/", function (req, res, next) {
     UserId: req.body.userId,
   };
 
-  console.log(values);
+  // console.log(values);
   models.MarketReviews.create(values)
     .then((result) => {
       res.json(result);

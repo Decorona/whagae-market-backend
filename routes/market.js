@@ -25,8 +25,6 @@ router.get("/", function (req, res, next) {
     whereClause.isEvent = isEvent === "true" ? 1 : 0;
   }
 
-  console.log(whereClause);
-
   models.Market.findAll({
     where: whereClause,
     include: [
@@ -46,10 +44,21 @@ router.get("/", function (req, res, next) {
 // Market Goods List Search
 router.get("/search", async (req, res, next) => {
   let whereClause = {};
+  let marketWhereClause = {};
+  const location = req.query.location;
+  const goodsName = req.query.goodsName;
 
-  if (req.query.goodsName) {
+  // 상품검색
+  if (goodsName) {
     whereClause.goodsName = {
-      [Op.like]: "%" + req.query.goodsName + "%",
+      [Op.like]: "%" + goodsName + "%",
+    };
+  }
+
+  // 마켓 지역검색
+  if (location) {
+    marketWhereClause.marketBusinessLocation = {
+      [Op.like]: "%" + location + "%",
     };
   }
 
@@ -60,6 +69,12 @@ router.get("/search", async (req, res, next) => {
       include: [
         {
           model: models.Market,
+          where: marketWhereClause,
+          include: [
+            {
+              model: models.MarketReviews,
+            },
+          ],
         },
       ],
     });
