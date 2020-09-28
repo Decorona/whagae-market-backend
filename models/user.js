@@ -62,6 +62,7 @@ module.exports = function (sequelize, DataTypes) {
     }
   );
   User.associate = (db) => {
+    // [엔티티 명세]
     // 유저는 여러개의 사업자(매장)를 가질 수 있다.
     db.User.hasMany(db.Market);
 
